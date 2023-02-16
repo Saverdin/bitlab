@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Test</title>
+    <style>
+        .AutoCard{background-color:aqua}
+    </style>
+</head>
+<body>
+    <script>
+        const div = document.createElement('div');
+        div.classList.add('wrapper');
+        const body = document.body;
+        body.appendChild(div);
+        const header = document.createElement('h1');
+        header.textContent = "DOM";
+        div.insertAdjacentElement('beforebegin', header);
+        const ul = `
+            <ul>
+                <li>Один</li>
+                <li>Два</li>
+                <li>Три</li>
+            </ul>
+        `;
+        div.innerHTML = ul;
+        const img = document.createElement('img')
+        img.src = 'https://picsum.photos/240';
+        img.width = 240;
+        img.classList.add('super');
+        img.alt = 'Super man';
+        div.appendChild(img);
+        const elemHTML = `
+             <div class = 'pDiv'>
+                <p>Beka</p>
+                <p>Zheka</p>
+            </div>
+        `;
+        const ulList = div.querySelector('ul');
+        ulList.insertAdjacentHTML('beforebegin', elemHTML);
+        const pDiv = document.querySelector('.pDiv')
+        pDiv.children[1].classList.add('text')    
+        pDiv.firstElementChild.remove();
+
+        const generateAutoCard=(brand, color, year)=> {
+            const curDate = new Date();
+            const curYear = curDate.getFullYear(); 
+            return `
+            <div class = "AutoCard">
+            <h2> ${brand} ${year} </h2>
+            <p> Автомобиль ${brand} - ${year} года. Возраст авто - ${curYear-year} лет. </p>
+            <p> Цвет: ${color} </p>
+            <button type= 'button' class = 'btn'>  Удалить </button>
+            </div> 
+            `;
+        }
+
+        const carsDiv = document.createElement('div')
+        carsDiv.classList.add('autos');
+
+        const carList = [
+            {brand: 'Tesla', year: '2015', color: 'red'},
+            {brand: 'Lexsus', year: '2016', color: 'blu'},
+            {brand: 'Nissan', year: '2017', color: 'black'}
+        ]
+
+        const carsHTML = carList.map(car =>{
+            return generateAutoCard(car.brand, car.color, car.year);
+        } ).join('')
+
+        carsDiv.innerHTML = carsHTML
+
+        div.insertAdjacentElement('beforebegin', carsDiv)
+
+        const buttons = document.querySelectorAll('.btn')
+
+        function handleClick(e){
+            const currentButton = e.currentTarget;
+            currentButton.parentElement.remove();
+            console.log(currentButton.parentElement);
+        }
+        buttons.forEach(button => {
+            button.addEventListener('click', handleClick)
+        })
+
+        
+
+
+
+    </script>
+</body>
+</html>

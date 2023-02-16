@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<style>
+   .tb{padding: 5px;}
+   .btn{background-color: blue; color: white; width: 120%; margin-left: 200%;}
+    td{padding: 10px;}
+</style>
+
+<body>
+    <table class="tb">
+        <tr>
+            <td>
+                LOGIN:
+            </td>
+            <td>
+                <input type="text" id="lg" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                PASSWORD:
+            </td>
+            <td>
+                <input type="password" id="ps">
+            </td>
+        </tr>
+
+       <tr>
+             <td>
+                 <button type="button" class="btn">SIGN IN</button>
+            </td>
+       </tr>
+        
+        
+            
+    </table>
+
+    <script>
+
+         let arr = [
+            {LOGIN:"Boss", PASSWORD: "Qwerty85"},
+            {LOGIN:"Legion", PASSWORD: "Trewq58"}
+        ] 
+
+        const buttons = document.querySelector('btn');
+        
+        buttons.forEach (button => {
+            button.addEventlistener('click', SingIn)
+        });
+
+        function SingIn(e){
+            const curenntButton = e.currentTarget;
+           
+            for ( let i of arr){
+            if(arr[i]==lg && arr[i]==ps)
+            console.log("You are authenticated");
+ 
+          }
+
+        }
+        
+        
+
+
+        
+
+        
+        
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Assalamu aleikum Savika</h1>
+    <a th:href="@{'/about'}">About me</a>
+    <h1>
+        <span th:text="${superTovar.name}"></span>
+        for<span th:text="${superTovar.price}"></span>
+        <span th:text="${superTovar.amount}"></span>left
+    </h1>
+
+    <form th:action="@{'/add-item'}" method="post">
+        NAME : <input type="text" name="item_name">
+        PRICE : <input type="text" name="item_price">
+        AMOUNT : <input type="text" name="item_amount">
+        <button>ADD ITEM</button>
+    </form>
+
+    <div th:each="tov: ${tovary}">
+        Item <span th:text="${tov.name}"></span>
+        for <span th:text="${tov.price}"></span>KZT
+        <span th:text="${tov.amount}"></span>left
+    </div>
+</body>
+</html>
